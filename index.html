@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <title></title>
+    <style>
+        body{
+            color: black;
+        }
+
+        .chat-textarea:hover{
+            border: none;
+            box-shadow: none;
+        }
+
+        .chat-textarea:focus-visible{
+            border: none;
+            box-shadow: none;
+            outline: none;
+        }
+    </style>
+</head>
+
+<body class="font-sans bg-gray-100">
+    <div class="flex h-screen flex-row w-[40%]">
+        <div class="flex-shrink-0 w-64 bg-black text-white" style="background-color: rgb(214 34 135)">
+            <div class="p-4">
+                <img class="w-40" src="./public/images/HealthiWealthi_Main_Logo.png" alt="logo" />
+                <div class="mt-4">
+                    <button class="flex justify-between items-center w-full rounded-md py-2 px-2 cursor-pointer bg-pink-400 hover:bg-pink-500 transition">
+                        <span class="text-sm px-2 font-medium">
+                            New chat
+                        </span>
+                        <div class="">
+                            <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                            width="16" height="16" viewBox="0 0 24.000000 24.000000"
+                            preserveAspectRatio="xMidYMid meet">
+                           
+                           <g transform="translate(0.000000,24.000000) scale(0.100000,-0.100000)"
+                           fill="#ffffff" stroke="none">
+                           <path d="M110 175 l0 -45 -45 0 c-25 0 -45 -4 -45 -10 0 -5 20 -10 45 -10 l45
+                           0 0 -45 c0 -25 5 -45 10 -45 6 0 10 20 10 45 l0 45 45 0 c25 0 45 5 45 10 0 6
+                           -20 10 -45 10 l-45 0 0 45 c0 25 -4 45 -10 45 -5 0 -10 -20 -10 -45z"/>
+                           </g>
+                           </svg>
+                        </div>
+                    </button>
+                </div>
+                <div class="flex items-center flex-row fixed bottom-4 cursor-pointer rounded-md py-2 px-1 w-56 transition">     
+                    <div class="flex justify-center items-center rounded-full w-10 h-10" style="background-color: rgba(252,231,243,1);">
+                        <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                            width="22" height="22" viewBox="0 0 24.000000 24.000000"
+                            preserveAspectRatio="xMidYMid meet">
+
+                            <g transform="translate(0.000000,24.000000) scale(0.100000,-0.100000)"
+                            fill="#000000" stroke="none">
+                            <path d="M90 195 c-15 -18 -10 -45 13 -59 34 -22 73 27 47 59 -16 19 -44 19
+                            -60 0z"/>
+                            <path d="M58 84 c-16 -8 -28 -23 -28 -34 0 -18 7 -20 90 -20 83 0 90 2 90 20
+                            0 42 -97 64 -152 34z"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="px-2 text-sm font-bold">Guest</div>
+                </div>
+            </div>
+        </div>
+        <div class="flex w-full h-full flex-col" style="background: rgba(252,231,243,1);">
+            <div class="flex-1 overflow-hidden">
+                <div class="flex h-full flex-col items-center justify-center mt-5">
+                    <div class="relative">
+                        <div style="" class="mb-3 ">
+                            <div class="gizmo-shadow-stroke relative flex h-full items-center justify-center rounded-full text-black">
+                                <img class="w-40" src="./public/images/HealthiWealthi_Main_Logo.png" alt="logo" />
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-5 mt-1 text-2xl font-medium">
+                        How can I help you today?
+                    </div>
+                </div>
+            </div>
+            <div class="w-full pt-2 md:pt-0 dark:border-white/20 md:border-transparent md:dark:border-transparent md:w-[calc(100%-.5rem)]">
+                <form class="stretch mx-2 flex flex-row gap-3 last:mb-2 md:mx-4 md:last:mb-6 lg:mx-auto lg:max-w-2xl xl:max-w-3xl">
+                    <div class="relative flex h-full flex-1 items-stretch md:flex-col">
+                        <div>
+                            <div class="h-full ml-1 md:w-full md:m-auto md:mb-4">
+                                <div class="">
+                                    <div class="absolute bottom-full left-0 mb-4 flex w-full grow gap-2 px-1 pb-1 sm:px-2 sm:pb-0 md:static md:mb-0 md:max-w-none">
+                                        <div class="flex w-full grid-flow-col grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-2">
+                                            <div class="flex flex-col gap-2 w-full">
+                                                <span data-projection-id="264"
+                                                    style="opacity: 1; transform: none;">
+                                                    <button
+                                                        class="btn relative border border-[#E5E7EB] group w-full whitespace-nowrap rounded-xl px-4 py-3 text-left text-gray-700 dark:text-gray-300 md:whitespace-normal"
+                                                        as="button">
+                                                        <div class="flex w-full gap-2 items-center justify-center">
+                                                            <div class="flex w-full items-center justify-between">
+                                                                <div class="flex flex-col overflow-hidden">
+                                                                    <div class="truncate text-sm font-medium">Explain options trading</div>
+                                                                    <div class="truncate font-normal opacity-50 text-sm font-normal">if
+                                                                        I'm familiar with buying and selling stocks</div>
+                                                                    </div>
+                                                                <div
+                                                                    class="absolute bottom-0 right-0 top-0 flex items-center rounded-xl bg-gradient-to-l from-gray-50 from-[60%] pl-6 pr-4 text-gray-700 opacity-0 group-hover:opacity-100 dark:from-gray-700 dark:text-gray-200">
+                                                                    <span class data-state="closed">
+                                                                        <div
+                                                                            class="rounded-lg bg-token-surface-primary p-1 shadow-xxs dark:shadow-none">
+                                                                            <svg width="24" height="24"
+                                                                                viewBox="0 0 24 24" fill="none"
+                                                                                class="icon-sm text-token-text-primary">
+                                                                                <path d="M7 11L12 6L17 11M12 18V7"
+                                                                                    stroke="currentColor"
+                                                                                    stroke-width="2"
+                                                                                    stroke-linecap="round"
+                                                                                    stroke-linejoin="round"></path>
+                                                                            </svg>
+                                                                        </div>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </button>
+                                                </span>
+                                                <span data-projection-id="264"
+                                                    style="opacity: 1; transform: none;">
+                                                    <button
+                                                        class="btn relative border border-[#E5E7EB] group w-full whitespace-nowrap rounded-xl px-4 py-3 text-left text-gray-700 dark:text-gray-300 md:whitespace-normal"
+                                                        as="button">
+                                                        <div class="flex w-full gap-2 items-center justify-center">
+                                                            <div class="flex w-full items-center justify-between">
+                                                                <div class="flex flex-col overflow-hidden">
+                                                                    <div class="truncate text-sm font-medium">Explain options trading</div>
+                                                                    <div class="truncate font-normal opacity-50 text-sm font-normal">if
+                                                                        I'm familiar with buying and selling stocks</div>
+                                                                    </div>
+                                                                <div
+                                                                    class="absolute bottom-0 right-0 top-0 flex items-center rounded-xl bg-gradient-to-l from-gray-50 from-[60%] pl-6 pr-4 text-gray-700 opacity-0 group-hover:opacity-100 dark:from-gray-700 dark:text-gray-200">
+                                                                    <span class data-state="closed">
+                                                                        <div
+                                                                            class="rounded-lg bg-token-surface-primary p-1 shadow-xxs dark:shadow-none">
+                                                                            <svg width="24" height="24"
+                                                                                viewBox="0 0 24 24" fill="none"
+                                                                                class="icon-sm text-token-text-primary">
+                                                                                <path d="M7 11L12 6L17 11M12 18V7"
+                                                                                    stroke="currentColor"
+                                                                                    stroke-width="2"
+                                                                                    stroke-linecap="round"
+                                                                                    stroke-linejoin="round"></path>
+                                                                            </svg>
+                                                                        </div>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </button>
+                                                </span>
+                                            </div>
+                                                <div class="flex flex-col gap-2 w-full"><span data-projection-id="264"
+                                                    style="opacity: 1; transform: none;">
+                                                    <button
+                                                        class="btn relative border border-[#E5E7EB] group w-full whitespace-nowrap rounded-xl px-4 py-3 text-left text-gray-700 dark:text-gray-300 md:whitespace-normal"
+                                                        as="button">
+                                                        <div class="flex w-full gap-2 items-center justify-center">
+                                                            <div class="flex w-full items-center justify-between">
+                                                                <div class="flex flex-col overflow-hidden">
+                                                                    <div class="truncate text-sm font-medium">Explain options trading</div>
+                                                                    <div class="truncate font-normal opacity-50 text-sm font-normal">if
+                                                                        I'm familiar with buying and selling stocks</div>
+                                                                    </div>
+                                                                <div
+                                                                    class="absolute bottom-0 right-0 top-0 flex items-center rounded-xl bg-gradient-to-l from-gray-50 from-[60%] pl-6 pr-4 text-gray-700 opacity-0 group-hover:opacity-100 dark:from-gray-700 dark:text-gray-200">
+                                                                    <span class data-state="closed">
+                                                                        <div
+                                                                            class="rounded-lg bg-token-surface-primary p-1 shadow-xxs dark:shadow-none">
+                                                                            <svg width="24" height="24"
+                                                                                viewBox="0 0 24 24" fill="none"
+                                                                                class="icon-sm text-token-text-primary">
+                                                                                <path d="M7 11L12 6L17 11M12 18V7"
+                                                                                    stroke="currentColor"
+                                                                                    stroke-width="2"
+                                                                                    stroke-linecap="round"
+                                                                                    stroke-linejoin="round"></path>
+                                                                            </svg>
+                                                                        </div>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </button>
+                                                </span>
+                                                <span data-projection-id="264"
+                                                    style="opacity: 1; transform: none;">
+                                                    <button
+                                                        class="btn relative border border-[#E5E7EB] group w-full whitespace-nowrap rounded-xl px-4 py-3 text-left text-gray-700 dark:text-gray-300 md:whitespace-normal"
+                                                        as="button">
+                                                        <div class="flex w-full gap-2 items-center justify-center">
+                                                            <div class="flex w-full items-center justify-between">
+                                                                <div class="flex flex-col overflow-hidden">
+                                                                    <div class="truncate text-sm font-medium">Explain options trading</div>
+                                                                    <div class="truncate font-normal opacity-50 text-sm font-normal">if
+                                                                        I'm familiar with buying and selling stocks</div>
+                                                                    </div>
+                                                                <div
+                                                                    class="absolute bottom-0 right-0 top-0 flex items-center rounded-xl bg-gradient-to-l from-gray-50 from-[60%] pl-6 pr-4 text-gray-700 opacity-0 group-hover:opacity-100 dark:from-gray-700 dark:text-gray-200">
+                                                                    <span class data-state="closed">
+                                                                        <div
+                                                                            class="rounded-lg bg-token-surface-primary p-1 shadow-xxs dark:shadow-none">
+                                                                            <svg width="24" height="24"
+                                                                                viewBox="0 0 24 24" fill="none"
+                                                                                class="icon-sm text-token-text-primary">
+                                                                                <path d="M7 11L12 6L17 11M12 18V7"
+                                                                                    stroke="currentColor"
+                                                                                    stroke-width="2"
+                                                                                    stroke-linecap="round"
+                                                                                    stroke-linejoin="round"></path>
+                                                                            </svg>
+                                                                        </div>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-full my-2 items-center my-4">
+                            <div class="flex gap-2 items-center px-2 relative border border-[#E5E7EB] text-black rounded-2xl bg-white">
+                                <div contenteditable="true"
+                                    class="chat-textarea m-0 w-full px-2 py-4"
+                                    style="max-height: 200px; overflow-y: hidden; color: #7f7f7f;">
+                                    Message ChatGPT…
+                                </div>
+                                <button style="background-color: rgb(214 34 135)" class="text-white p-0.5 rounded-lg"
+                                    data-testid="send-button">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="black"
+                                        class="text-black dark:text-black">
+                                        <path d="M7 11L12 6L17 11M12 18V7" stroke="white" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

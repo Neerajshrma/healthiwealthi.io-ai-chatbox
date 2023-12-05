@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <title></title>
+    <style>
+        body{
+            color: black;
+        }
+
+        .chat-textarea:hover{
+            border: none;
+            box-shadow: none;
+        }
+
+        .chat-textarea:focus-visible{
+            border: none;
+            box-shadow: none;
+            outline: none;
+        }
+
+        .ai-chatbox{
+            height: 80vh;
+            overflow-y: scroll;
+        }
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .hide-scrollbar {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+</head>
+
+<body class="font-sans bg-gray-100">
+    <div class="flex h-screen flex-row w-[40%]">
+        <div class="flex-shrink-0 w-64 bg-black text-white" style="background-color: rgb(214 34 135)">
+            <div class="p-4">
+                <img class="w-40" src="./public/images/HealthiWealthi_Main_Logo.png" alt="logo" />
+                <div class="mt-4">
+                    <button class="flex justify-between items-center w-full rounded-md py-2 px-2 cursor-pointer bg-pink-400 hover:bg-pink-500 transition">
+                        <span class="text-sm px-2 font-medium">
+                            New chat
+                        </span>
+                        <div class="">
+                            <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                            width="16" height="16" viewBox="0 0 24.000000 24.000000"
+                            preserveAspectRatio="xMidYMid meet">
+                           
+                           <g transform="translate(0.000000,24.000000) scale(0.100000,-0.100000)"
+                           fill="#ffffff" stroke="none">
+                           <path d="M110 175 l0 -45 -45 0 c-25 0 -45 -4 -45 -10 0 -5 20 -10 45 -10 l45
+                           0 0 -45 c0 -25 5 -45 10 -45 6 0 10 20 10 45 l0 45 45 0 c25 0 45 5 45 10 0 6
+                           -20 10 -45 10 l-45 0 0 45 c0 25 -4 45 -10 45 -5 0 -10 -20 -10 -45z"/>
+                           </g>
+                           </svg>
+                        </div>
+                    </button>
+                </div>
+                <div class="flex items-center flex-row fixed bottom-4 cursor-pointer rounded-md py-2 px-1 w-56 transition">     
+                    <div class="text-black rounded-full w-10 h-10 font-bold text-sm" style="background-color: rgba(252,231,243,1);">
+                        <div class="flex justify-center items-center rounded-full w-10 h-10 font-bold text-sm" style="background-color: rgba(252,231,243,1);">
+                            <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                                width="22" height="22" viewBox="0 0 24.000000 24.000000"
+                                preserveAspectRatio="xMidYMid meet">
+
+                                <g transform="translate(0.000000,24.000000) scale(0.100000,-0.100000)"
+                                fill="#000000" stroke="none">
+                                <path d="M90 195 c-15 -18 -10 -45 13 -59 34 -22 73 27 47 59 -16 19 -44 19
+                                -60 0z"/>
+                                <path d="M58 84 c-16 -8 -28 -23 -28 -34 0 -18 7 -20 90 -20 83 0 90 2 90 20
+                                0 42 -97 64 -152 34z"/>
+                                </g>
+                            </svg>
+                        </div>                    
+                    </div>
+                    <div class="px-2 text-sm font-bold">Guest</div>
+                </div>
+            </div>
+        </div>
+        <div class="flex w-full h-full flex-col" style="background: rgba(252,231,243,1);">
+            <div class="flex-1 w-full pt-2 md:pt-0 dark:border-white/20 md:border-transparent md:dark:border-transparent md:w-[calc(100%-.5rem)]">
+                <div class="hide-scrollbar ai-chatbox last:mb-2 md:mx-4 md:last:mb-6 lg:mx-auto lg:max-w-2xl xl:max-w-3xl px-5">  
+                    <div class="mt-20">
+                        <div class="flex gap-4 w-full my-10">
+                            <div class="w-[10%] mt-1">
+                                <div style="background-color: rgb(214 34 135);" class="flex justify-center items-center w-6 h-6 rounded-full">
+                                    <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                                    width="14" height="14" viewBox="0 0 24.000000 24.000000"
+                                    preserveAspectRatio="xMidYMid meet">
+        
+                                    <g transform="translate(0.000000,24.000000) scale(0.100000,-0.100000)"
+                                    fill="#ffffff" stroke="none">
+                                    <path d="M90 195 c-15 -18 -10 -45 13 -59 34 -22 73 27 47 59 -16 19 -44 19
+                                    -60 0z"/>
+                                    <path d="M58 84 c-16 -8 -28 -23 -28 -34 0 -18 7 -20 90 -20 83 0 90 2 90 20
+                                    0 42 -97 64 -152 34z"/>
+                                    </g>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="text-base font-semibold">
+                                    You 
+                                </div>
+                                <div class="text-base font-normal">
+                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nulla natus eos reiciendis, necessitatibus vero ea eius sed quibusdam delectus ducimus impedit repellendus. Pariatur nulla, corporis amet fugit accusantium voluptatem earum.
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="flex gap-4 w-full my-10">
+                            <div class="w-[10%] mt-1">
+                                <div style="background-color: rgb(214 34 135);" class="flex justify-center items-center w-6 h-6 rounded-full">
+                                    <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                                    width="14" height="14" viewBox="0 0 30.000000 30.000000"
+                                    preserveAspectRatio="xMidYMid meet">
+                                   
+                                   <g transform="translate(0.000000,30.000000) scale(0.100000,-0.100000)"
+                                   fill="#ffffff" stroke="none">
+                                   <path d="M137 294 c-4 -4 -4 -18 -1 -30 6 -22 3 -24 -28 -24 -51 0 -58 -14
+                                   -58 -107 l0 -83 100 0 100 0 0 83 c0 93 -7 107 -57 107 -31 0 -33 3 -31 26 3
+                                   26 -11 41 -25 28z m-11 -115 c10 -17 -13 -36 -27 -22 -12 12 -4 33 11 33 5 0
+                                   12 -5 16 -11z m80 0 c10 -17 -13 -36 -27 -22 -12 12 -4 33 11 33 5 0 12 -5 16
+                                   -11z m2 -91 c3 -16 -5 -18 -57 -18 -44 0 -61 4 -61 13 0 23 13 28 65 25 38 -2
+                                   51 -7 53 -20z"/>
+                                   <path d="M10 140 c0 -22 5 -40 10 -40 6 0 10 18 10 40 0 22 -4 40 -10 40 -5 0
+                                   -10 -18 -10 -40z"/>
+                                   <path d="M270 104 l0 -76 -62 4 c-51 2 -63 0 -63 -12 0 -12 12 -14 65 -11 36
+                                   1 68 5 73 8 11 7 9 163 -3 163 -6 0 -10 -32 -10 -76z"/>
+                                   </g>
+                                   </svg>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="text-base font-semibold">
+                                    Ai 
+                                </div>
+                                <div class="text-base font-normal">
+                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nulla natus eos reiciendis, necessitatibus vero ea eius sed quibusdam delectus ducimus impedit repellendus. Pariatur nulla, corporis amet fugit accusantium voluptatem earum.
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="flex gap-4 w-full my-10">
+                            <div class="w-[10%] mt-1">
+                                <div style="background-color: rgb(214 34 135);" class="flex justify-center items-center w-6 h-6 rounded-full">
+                                    <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                                    width="14" height="14" viewBox="0 0 24.000000 24.000000"
+                                    preserveAspectRatio="xMidYMid meet">
+        
+                                    <g transform="translate(0.000000,24.000000) scale(0.100000,-0.100000)"
+                                    fill="#ffffff" stroke="none">
+                                    <path d="M90 195 c-15 -18 -10 -45 13 -59 34 -22 73 27 47 59 -16 19 -44 19
+                                    -60 0z"/>
+                                    <path d="M58 84 c-16 -8 -28 -23 -28 -34 0 -18 7 -20 90 -20 83 0 90 2 90 20
+                                    0 42 -97 64 -152 34z"/>
+                                    </g>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="text-base font-semibold">
+                                    You 
+                                </div>
+                                <div class="text-base font-normal">
+                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nulla natus eos reiciendis, necessitatibus vero ea eius sed quibusdam delectus ducimus impedit repellendus. Pariatur nulla, corporis amet fugit accusantium voluptatem earum.
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="flex gap-4 w-full my-10">
+                            <div class="w-[10%] mt-1">
+                                <div style="background-color: rgb(214 34 135);" class="flex justify-center items-center w-6 h-6 rounded-full">
+                                    <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                                    width="14" height="14" viewBox="0 0 30.000000 30.000000"
+                                    preserveAspectRatio="xMidYMid meet">
+                                   
+                                   <g transform="translate(0.000000,30.000000) scale(0.100000,-0.100000)"
+                                   fill="#ffffff" stroke="none">
+                                   <path d="M137 294 c-4 -4 -4 -18 -1 -30 6 -22 3 -24 -28 -24 -51 0 -58 -14
+                                   -58 -107 l0 -83 100 0 100 0 0 83 c0 93 -7 107 -57 107 -31 0 -33 3 -31 26 3
+                                   26 -11 41 -25 28z m-11 -115 c10 -17 -13 -36 -27 -22 -12 12 -4 33 11 33 5 0
+                                   12 -5 16 -11z m80 0 c10 -17 -13 -36 -27 -22 -12 12 -4 33 11 33 5 0 12 -5 16
+                                   -11z m2 -91 c3 -16 -5 -18 -57 -18 -44 0 -61 4 -61 13 0 23 13 28 65 25 38 -2
+                                   51 -7 53 -20z"/>
+                                   <path d="M10 140 c0 -22 5 -40 10 -40 6 0 10 18 10 40 0 22 -4 40 -10 40 -5 0
+                                   -10 -18 -10 -40z"/>
+                                   <path d="M270 104 l0 -76 -62 4 c-51 2 -63 0 -63 -12 0 -12 12 -14 65 -11 36
+                                   1 68 5 73 8 11 7 9 163 -3 163 -6 0 -10 -32 -10 -76z"/>
+                                   </g>
+                                   </svg>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="text-base font-semibold">
+                                    Ai 
+                                </div>
+                                <div class="text-base font-normal">
+                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nulla natus eos reiciendis, necessitatibus vero ea eius sed quibusdam delectus ducimus impedit repellendus. Pariatur nulla, corporis amet fugit accusantium voluptatem earum.
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="flex gap-4 w-full my-10">
+                            <div class="w-[10%] mt-1">
+                                <div style="background-color: rgb(214 34 135);" class="flex justify-center items-center w-6 h-6 rounded-full">
+                                    <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                                    width="14" height="14" viewBox="0 0 24.000000 24.000000"
+                                    preserveAspectRatio="xMidYMid meet">
+        
+                                    <g transform="translate(0.000000,24.000000) scale(0.100000,-0.100000)"
+                                    fill="#ffffff" stroke="none">
+                                    <path d="M90 195 c-15 -18 -10 -45 13 -59 34 -22 73 27 47 59 -16 19 -44 19
+                                    -60 0z"/>
+                                    <path d="M58 84 c-16 -8 -28 -23 -28 -34 0 -18 7 -20 90 -20 83 0 90 2 90 20
+                                    0 42 -97 64 -152 34z"/>
+                                    </g>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="text-base font-semibold">
+                                    You 
+                                </div>
+                                <div class="text-base font-normal">
+                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nulla natus eos reiciendis, necessitatibus vero ea eius sed quibusdam delectus ducimus impedit repellendus. Pariatur nulla, corporis amet fugit accusantium voluptatem earum.
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="flex gap-4 w-full my-10">
+                            <div class="w-[10%] mt-1">
+                                <div style="background-color: rgb(214 34 135);" class="flex justify-center items-center w-6 h-6 rounded-full">
+                                    <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                                    width="14" height="14" viewBox="0 0 30.000000 30.000000"
+                                    preserveAspectRatio="xMidYMid meet">
+                                   
+                                   <g transform="translate(0.000000,30.000000) scale(0.100000,-0.100000)"
+                                   fill="#ffffff" stroke="none">
+                                   <path d="M137 294 c-4 -4 -4 -18 -1 -30 6 -22 3 -24 -28 -24 -51 0 -58 -14
+                                   -58 -107 l0 -83 100 0 100 0 0 83 c0 93 -7 107 -57 107 -31 0 -33 3 -31 26 3
+                                   26 -11 41 -25 28z m-11 -115 c10 -17 -13 -36 -27 -22 -12 12 -4 33 11 33 5 0
+                                   12 -5 16 -11z m80 0 c10 -17 -13 -36 -27 -22 -12 12 -4 33 11 33 5 0 12 -5 16
+                                   -11z m2 -91 c3 -16 -5 -18 -57 -18 -44 0 -61 4 -61 13 0 23 13 28 65 25 38 -2
+                                   51 -7 53 -20z"/>
+                                   <path d="M10 140 c0 -22 5 -40 10 -40 6 0 10 18 10 40 0 22 -4 40 -10 40 -5 0
+                                   -10 -18 -10 -40z"/>
+                                   <path d="M270 104 l0 -76 -62 4 c-51 2 -63 0 -63 -12 0 -12 12 -14 65 -11 36
+                                   1 68 5 73 8 11 7 9 163 -3 163 -6 0 -10 -32 -10 -76z"/>
+                                   </g>
+                                   </svg>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="text-base font-semibold">
+                                    Ai 
+                                </div>
+                                <div class="text-base font-normal">
+                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nulla natus eos reiciendis, necessitatibus vero ea eius sed quibusdam delectus ducimus impedit repellendus. Pariatur nulla, corporis amet fugit accusantium voluptatem earum.
+                                </div>
+                            </div>
+                        </div>  
+                    </div>
+                </div>
+            </div>
+            <div class="w-full pt-2 md:pt-0 dark:border-white/20 md:border-transparent md:dark:border-transparent md:w-[calc(100%-.5rem)]">
+                <form class="stretch mx-2 flex flex-row gap-3 last:mb-2 md:mx-4 md:last:mb-6 lg:mx-auto lg:max-w-2xl xl:max-w-3xl">  
+                    <div class="w-full my-2 items-center my-4">
+                        <div class="flex gap-2 items-center px-2 relative border border-[#E5E7EB] text-black rounded-2xl bg-white">
+                            <div contenteditable="true"
+                                class="chat-textarea m-0 w-full px-2 py-4"
+                                style="max-height: 200px; overflow-y: hidden; color: #7f7f7f;">
+                                Message ChatGPT…
+                            </div>
+                            <button style="background-color: rgb(214 34 135)" class="text-white p-0.5 rounded-lg"
+                                data-testid="send-button">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="black"
+                                    class="text-black dark:text-black">
+                                    <path d="M7 11L12 6L17 11M12 18V7" stroke="white" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
