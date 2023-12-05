@@ -1,25 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
     <title></title>
     <style>
-        body {
+        body{
             color: black;
         }
 
-        .chat-textarea:hover {
+        .chat-textarea:hover{
             border: none;
             box-shadow: none;
         }
 
-        .chat-textarea:focus-visible {
+        .chat-textarea:focus-visible{
             border: none;
             box-shadow: none;
             outline: none;
+        }
+
+        .ai-chatbox{
+            height: 80vh;
+            overflow-y: scroll;
+        }
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .hide-scrollbar {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+        }
+        .spinner {
+            display: block;
+            width: 30px;
+            height: 30px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><circle fill="none" stroke-opacity="1" stroke="%23000000" stroke-width=".5" cx="100" cy="100" r="0"><animate attributeName="r" calcMode="spline" dur="0.6" values="1;80" keyTimes="0;1" keySplines="0 .2 .5 1" repeatCount="indefinite"></animate><animate attributeName="stroke-width" calcMode="spline" dur="0.6" values="0;25" keyTimes="0;1" keySplines="0 .2 .5 1" repeatCount="indefinite"></animate><animate attributeName="stroke-opacity" calcMode="spline" dur="0.6" values="1;0" keyTimes="0;1" keySplines="0 .2 .5 1" repeatCount="indefinite"></animate></circle></svg>');
         }
     </style>
 </head>
@@ -30,43 +50,48 @@
             <div class="p-4">
                 <img class="w-40" src="./public/images/HealthiWealthi_Main_Logo.png" alt="logo" />
                 <div class="mt-4">
-                    <button
-                        class="flex justify-between items-center w-full rounded-md py-2 px-2 cursor-pointer bg-pink-400 hover:bg-pink-500 transition">
-                        <span class="text-sm px-2 font-medium"> New chat </span>
+                    <button id="js-new-chat" class="flex justify-between items-center w-full rounded-md py-2 px-2 cursor-pointer bg-pink-400 hover:bg-pink-500 transition">
+                        <span class="text-sm px-2 font-medium">
+                            New chat
+                        </span>
                         <div class="">
-                            <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                viewBox="0 0 24.000000 24.000000" preserveAspectRatio="xMidYMid meet">
-                                <g transform="translate(0.000000,24.000000) scale(0.100000,-0.100000)" fill="#ffffff"
-                                    stroke="none">
-                                    <path d="M110 175 l0 -45 -45 0 c-25 0 -45 -4 -45 -10 0 -5 20 -10 45 -10 l45
+                            <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                            width="16" height="16" viewBox="0 0 24.000000 24.000000"
+                            preserveAspectRatio="xMidYMid meet">
+                           
+                           <g transform="translate(0.000000,24.000000) scale(0.100000,-0.100000)"
+                           fill="#ffffff" stroke="none">
+                           <path d="M110 175 l0 -45 -45 0 c-25 0 -45 -4 -45 -10 0 -5 20 -10 45 -10 l45
                            0 0 -45 c0 -25 5 -45 10 -45 6 0 10 20 10 45 l0 45 45 0 c25 0 45 5 45 10 0 6
-                           -20 10 -45 10 l-45 0 0 45 c0 25 -4 45 -10 45 -5 0 -10 -20 -10 -45z" />
-                                </g>
-                            </svg>
+                           -20 10 -45 10 l-45 0 0 45 c0 25 -4 45 -10 45 -5 0 -10 -20 -10 -45z"/>
+                           </g>
+                           </svg>
                         </div>
                     </button>
                 </div>
-                <div
-                    class="flex items-center flex-row fixed bottom-4 cursor-pointer rounded-md py-2 px-1 w-56 hover:bg-pink-500 transition">
-                    <div class="flex justify-center items-center rounded-full w-10 h-10"
-                        style="background-color: rgba(252, 231, 243, 1)">
-                        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="22" height="22"
-                            viewBox="0 0 24.000000 24.000000" preserveAspectRatio="xMidYMid meet">
-                            <g transform="translate(0.000000,24.000000) scale(0.100000,-0.100000)" fill="#000000"
-                                stroke="none">
+                <div class="flex items-center flex-row fixed bottom-4 cursor-pointer rounded-md py-2 px-1 w-56 transition">     
+                    <div class="text-black rounded-full w-10 h-10 font-bold text-sm" style="background-color: rgba(252,231,243,1);">
+                        <div class="flex justify-center items-center rounded-full w-10 h-10 font-bold text-sm" style="background-color: rgba(252,231,243,1);">
+                            <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                                width="22" height="22" viewBox="0 0 24.000000 24.000000"
+                                preserveAspectRatio="xMidYMid meet">
+
+                                <g transform="translate(0.000000,24.000000) scale(0.100000,-0.100000)"
+                                fill="#000000" stroke="none">
                                 <path d="M90 195 c-15 -18 -10 -45 13 -59 34 -22 73 27 47 59 -16 19 -44 19
-                            -60 0z" />
+                                -60 0z"/>
                                 <path d="M58 84 c-16 -8 -28 -23 -28 -34 0 -18 7 -20 90 -20 83 0 90 2 90 20
-                            0 42 -97 64 -152 34z" />
-                            </g>
-                        </svg>
+                                0 42 -97 64 -152 34z"/>
+                                </g>
+                            </svg>
+                        </div>                    
                     </div>
                     <div class="px-2 text-sm font-bold">Guest</div>
                 </div>
             </div>
         </div>
-        <div class="flex w-full h-full flex-col" style="background: rgba(252, 231, 243, 1)">
-            <div class="relative overflow-hidden w-2/3 mx-auto flex justify-center flex-col" style="height: 85vh;">
+        <div class="flex w-full h-full flex-col" style="background: rgba(252,231,243,1);">
+            <div class="js-ai-home-container relative overflow-hidden w-2/3 mx-auto flex justify-center flex-col" style="height: 85vh;">
                 <div class="mt-5 text-center">
                     <div class="mb-20 mt-1 text-2xl font-medium">
                         How can I assist you with your lifestyle habit improvements or health challenges today?
@@ -81,18 +106,17 @@
                                     <div class="flex flex-col gap-2 w-full">
                                         <div data-projection-id="264" style="opacity: 1; transform: none">
                                             <button
-                                                class="btn relative border border-[#E5E7EB] group w-full whitespace-nowrap rounded-xl px-4 py-3 text-left text-gray-700 dark:text-gray-300 md:whitespace-normal"
-                                                as="button">
+                                                class="btn relative border border-[#E5E7EB] group w-full whitespace-nowrap rounded-xl px-4 py-3 text-left text-gray-700 dark:text-gray-300 md:whitespace-normal js-quick-question"
+                                                as="button" data-question="I constant stomach bloating, what can do to reduce or get rid of it?">
                                                 <span class="flex w-full gap-2 items-center justify-center">
                                                     <span class="flex w-full items-center justify-between">
                                                         <span class="flex flex-col overflow-hidden">
                                                             <span class="truncate text-sm font-medium">
-                                                                I constant stomach bloating
+                                                                I have constant stomach bloating
                                                             </span>
                                                             <span
                                                                 class="truncate font-normal opacity-50 text-sm font-normal">
-                                                                if I'm familiar with buying and selling
-                                                                stocks
+                                                                what can do to reduce or get rid of it?
                                                             </span>
                                                         </span>
                                                         <span
@@ -117,8 +141,8 @@
                                         </div>
                                         <div data-projection-id="264" style="opacity: 1; transform: none">
                                             <button
-                                                class="btn relative border border-[#E5E7EB] group w-full whitespace-nowrap rounded-xl px-4 py-3 text-left text-gray-700 dark:text-gray-300 md:whitespace-normal"
-                                                as="button">
+                                                class="btn relative border border-[#E5E7EB] group w-full whitespace-nowrap rounded-xl px-4 py-3 text-left text-gray-700 dark:text-gray-300 md:whitespace-normal js-quick-question"
+                                                as="button" data-question="I have back pain, which excersies should I do?">
                                                 <span class="flex w-full gap-2 items-center justify-center">
                                                     <span class="flex w-full items-center justify-between">
                                                         <span class="flex flex-col overflow-hidden">
@@ -127,8 +151,7 @@
                                                             </span>
                                                             <span
                                                                 class="truncate font-normal opacity-50 text-sm font-normal">
-                                                                if I'm familiar with buying and selling
-                                                                stocks
+                                                                which excersies should I do? 
                                                             </span>
                                                         </span>
                                                         <span
@@ -155,8 +178,8 @@
                                     <div class="flex flex-col gap-2 w-full">
                                         <div data-projection-id="264" style="opacity: 1; transform: none">
                                             <button
-                                                class="btn relative border border-[#E5E7EB] group w-full whitespace-nowrap rounded-xl px-4 py-3 text-left text-gray-700 dark:text-gray-300 md:whitespace-normal"
-                                                as="button">
+                                                class="btn relative border border-[#E5E7EB] group w-full whitespace-nowrap rounded-xl px-4 py-3 text-left text-gray-700 dark:text-gray-300 md:whitespace-normal js-quick-question"
+                                                as="button" data-question="I have acidity, which foods to avoid?">
                                                 <span class="flex w-full gap-2 items-center justify-center">
                                                     <span class="flex w-full items-center justify-between">
                                                         <span class="flex flex-col overflow-hidden">
@@ -165,8 +188,7 @@
                                                             </span>
                                                             <span
                                                                 class="truncate font-normal opacity-50 text-sm font-normal">
-                                                                if I'm familiar with buying and selling
-                                                                stocks
+                                                                which foods to avoid?
                                                             </span>
                                                         </span>
                                                         <span
@@ -191,8 +213,8 @@
                                         </div>
                                         <div data-projection-id="264" style="opacity: 1; transform: none">
                                             <button
-                                                class="btn relative border border-[#E5E7EB] group w-full whitespace-nowrap rounded-xl px-4 py-3 text-left text-gray-700 dark:text-gray-300 md:whitespace-normal"
-                                                as="button">
+                                                class="btn relative border border-[#E5E7EB] group w-full whitespace-nowrap rounded-xl px-4 py-3 text-left text-gray-700 dark:text-gray-300 md:whitespace-normal js-quick-question"
+                                                as="button" data-question="I have migrane, can it be cured permanently?">
                                                 <span class="flex w-full gap-2 items-center justify-center">
                                                     <span class="flex w-full items-center justify-between">
                                                         <span class="flex flex-col overflow-hidden">
@@ -201,8 +223,7 @@
                                                             </span>
                                                             <span
                                                                 class="truncate font-normal opacity-50 text-sm font-normal">
-                                                                if I'm familiar with buying and selling
-                                                                stocks
+                                                                can it be cured permanently?
                                                             </span>
                                                         </span>
                                                         <span
@@ -232,36 +253,229 @@
                     </div>
                 </div>
             </div>
-            <div class="w-full pt-2 md:pt-0">
-                <div
-                    class="stretch mx-2 flex flex-row gap-3 last:mb-2 md:mx-4 md:last:mb-6 lg:mx-auto lg:max-w-2xl xl:max-w-3xl">
-                    <div class="relative flex h-full flex-1 items-stretch md:flex-col">
-
-                        <div class="w-full my-2 items-center my-4">
-                            <div
-                                class="flex gap-2 items-center px-2 relative border border-[#E5E7EB] text-black rounded-2xl bg-white">
-                                <div contenteditable="true" class="chat-textarea m-0 w-full px-2 py-4" style="
-                      max-height: 200px;
-                      overflow-y: hidden;
-                      color: #7f7f7f;
-                    ">
-                                    Message ChatGPT…
-                                </div>
-                                <button style="background-color: rgb(214 34 135)" class="text-white p-0.5 rounded-lg"
-                                    data-testid="send-button">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="black"
-                                        class="text-black dark:text-black">
-                                        <path d="M7 11L12 6L17 11M12 18V7" stroke="white" stroke-width="2"
-                                            stroke-linecap="round" stroke-linejoin="round"></path>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
+            <div class="js-ai-chatbox-container flex-1 w-full pt-2 md:pt-0 dark:border-white/20 md:border-transparent md:dark:border-transparent md:w-[calc(100%-.5rem)] hidden">
+                <div class="hide-scrollbar ai-chatbox last:mb-2 md:mx-4 md:last:mb-6 lg:mx-auto lg:max-w-2xl xl:max-w-3xl px-5">  
+                    <div class="mt-20" id="js-conversation"> 
                     </div>
                 </div>
             </div>
+            <div class="w-full pt-2 md:pt-0 dark:border-white/20 md:border-transparent md:dark:border-transparent md:w-[calc(100%-.5rem)]">
+                <form class="stretch mx-2 flex flex-row gap-3 last:mb-2 md:mx-4 md:last:mb-6 lg:mx-auto lg:max-w-2xl xl:max-w-3xl">  
+                    <div class="w-full my-2 items-center my-4">
+                        <div class="flex gap-2 items-center px-2 relative border border-[#E5E7EB] text-black rounded-2xl bg-white">
+                            <div id="js-message-input" contenteditable="true"
+                                class="chat-textarea m-0 w-full px-2 py-4"
+                                style="max-height: 200px; overflow-y: hidden; color: #7f7f7f;">
+                                <span class="message-input__placeholder">Message Dr. HealthiWealthi™ AI…</span>
+                            </div>
+                            <button id="js-message-send-button" style="background-color: rgb(214 34 135)" class="text-white p-0.5 rounded-lg"
+                                data-testid="send-button">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="black"
+                                    class="text-black dark:text-black">
+                                    <path d="M7 11L12 6L17 11M12 18V7" stroke="white" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</body>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.min.js" crossorigin="anonymous"></script>
+    <script>
+        
+        var threadId = '';
+        var checkRunStatusActive = false;
+        const API_BASE_URL = 'https://healthiwealthi.cloudapps.zeroek.com/api/v1/ai-assistants/lifestyle-medicine/';
 
+        const scrollToLastMessage = () => $(".ai-chatbox").scrollTop(function() { return this.scrollHeight; });
+
+        $(document).ready(function(){
+
+            $('#js-message-input').click(function() {
+                if (messageInputHasPlaceholder($(this))) {
+                    $(this).html('');
+                } 
+            })
+            $('#js-message-input').blur(function() {
+                if ($(this).html() == '') {
+                    $(this).html(messageInputPlaceholder());
+                } 
+            });
+
+            $('#js-message-send-button').click(function (e) {
+                e.preventDefault();
+                if (messageInputHasPlaceholder($('#js-message-input'))) {
+                    return false;
+                }
+
+                sendMessage($('#js-message-input').text());
+            });
+
+            $("#js-message-input").keypress(function (e) {
+                let code = (e.keyCode ? e.keyCode : e.which);
+
+                if (!e.shiftKey && code == 13) {
+                    sendMessage($("#js-message-input").text());
+                    return true;
+                }
+            });
+
+            $('#js-new-chat').click(() => {
+                threadId = '';
+                $('.js-ai-home-container').show();
+                $('.js-ai-chatbox-container').hide();
+                $('#js-conversation').empty();
+            });
+
+            $('.js-quick-question').click(function (e) {
+                e.preventDefault();
+                sendMessage($(this).data('question'));
+            });
+            
+        });
+
+        const constructMessage = (type, message) => {
+            const title = type == 'user'? 'You' : 'Dr. HealthiWealthi™ AI';
+            const icon = type == 'user'? 
+            `<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+            width="14" height="14" viewBox="0 0 24.000000 24.000000"
+            preserveAspectRatio="xMidYMid meet">
+                <g transform="translate(0.000000,24.000000) scale(0.100000,-0.100000)"
+                fill="#ffffff" stroke="none">
+                <path d="M90 195 c-15 -18 -10 -45 13 -59 34 -22 73 27 47 59 -16 19 -44 19
+                -60 0z"/>
+                <path d="M58 84 c-16 -8 -28 -23 -28 -34 0 -18 7 -20 90 -20 83 0 90 2 90 20
+                0 42 -97 64 -152 34z"/>
+                </g>
+            </svg>` : 
+            `
+            <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+                width="14" height="14" viewBox="0 0 30.000000 30.000000"
+                preserveAspectRatio="xMidYMid meet">
+                <g transform="translate(0.000000,30.000000) scale(0.100000,-0.100000)"
+                fill="#ffffff" stroke="none">
+                <path d="M137 294 c-4 -4 -4 -18 -1 -30 6 -22 3 -24 -28 -24 -51 0 -58 -14
+                -58 -107 l0 -83 100 0 100 0 0 83 c0 93 -7 107 -57 107 -31 0 -33 3 -31 26 3
+                26 -11 41 -25 28z m-11 -115 c10 -17 -13 -36 -27 -22 -12 12 -4 33 11 33 5 0
+                12 -5 16 -11z m80 0 c10 -17 -13 -36 -27 -22 -12 12 -4 33 11 33 5 0 12 -5 16
+                -11z m2 -91 c3 -16 -5 -18 -57 -18 -44 0 -61 4 -61 13 0 23 13 28 65 25 38 -2
+                51 -7 53 -20z"/>
+                <path d="M10 140 c0 -22 5 -40 10 -40 6 0 10 18 10 40 0 22 -4 40 -10 40 -5 0
+                -10 -18 -10 -40z"/>
+                <path d="M270 104 l0 -76 -62 4 c-51 2 -63 0 -63 -12 0 -12 12 -14 65 -11 36
+                1 68 5 73 8 11 7 9 163 -3 163 -6 0 -10 -32 -10 -76z"/>
+                </g>
+            </svg>` ;
+            const className = type == 'user'? 'js-user-message' : 'js-assistant-message';
+            return `                        
+                <div class="flex gap-4 w-full my-10 ${className}">
+                    <div class="w-[10%] mt-1">
+                        <div style="background-color: rgb(214 34 135);" class="flex justify-center items-center w-6 h-6 rounded-full">
+                            ${icon}
+                        </div>
+                    </div>
+                    <div>
+                        <div class="text-base font-semibold">
+                            ${title}
+                        </div>
+                        <div class="text-base font-normal js-message">
+                            ${message}
+                        </div>
+                    </div>
+                </div>`;
+        }
+    const messageInputPlaceholder = () => `<span class="message-input__placeholder">Message Dr. HealthiWealthi™ AI…</span>`;
+    const messageInputHasPlaceholder = (element) => {
+        if (element.find('.message-input__placeholder').length) {
+            return true;
+        }
+        return false;
+    };
+    const showAssitantMessage = (message) => {
+        converter = new showdown.Converter();
+        $('.js-assistant-message').last().find('.js-message').html(converter.makeHtml(message));
+        scrollToLastMessage();
+    }
+
+    const sendMessage = (message) => {
+        $('.js-ai-home-container').hide();
+        $('.js-ai-chatbox-container').show();
+        $('#js-message-input').empty();
+        $('#js-message-input').blur();
+        $('#js-conversation').append(constructMessage('user', message));
+        $('#js-conversation').append(constructMessage('assistant', '<span class="spinner"></span>'));
+        setTimeout(() => {
+            scrollToLastMessage();
+        }, 100);
+        const threadIdParam = threadId ? `?thread_id=${threadId}` : '';
+        $.ajax({
+            type: "POST",
+            url: `${API_BASE_URL}messages${threadIdParam}`,
+            data: JSON.stringify({
+                message: message
+            }),
+            headers: {
+                "content-type": "application/json" // Or add this line
+            },
+            success: (function (response) {
+                threadId = response.data.thread_id;
+                checkRunStatus(response.data.run_id);
+            }),
+            dataType: 'json'
+        });
+    }
+
+    const getMessgaes = (runId) => {
+        const threadIdParam = threadId ? `?thread_id=${threadId}` : '';
+        $.ajax({
+            type: "GET",
+            url: `${API_BASE_URL}messages${threadIdParam}`,
+            success: (function (response) {
+                $(response.data.messages).each((index, item) => {
+                    console.log(runId, item.run_id);
+                    if (runId == item.run_id) {
+                        showAssitantMessage(item.content[0].text.value);
+                        return;
+                    }
+                });
+            }),
+            dataType: 'json'
+        });
+    }
+
+    const checkRunStatus = (runId) => {
+        $.ajax({
+            url: `${API_BASE_URL}messages/response-status`,
+            type: "GET",
+            data: {
+                thread_id: threadId,
+                run_id: runId
+            },
+            success: ((response) => {
+                if (response.data.status == 'completed') {
+                    getMessgaes(runId);
+                    return;
+                }
+                checkRunStatus(runId);
+            }),
+            error: () =>{
+                // checkRunStatus(runId);
+            },
+            dataType: 'json'
+        });
+    }
+        
+    const enterPressed = (element) => {
+    if (element.keyCode == 13) {
+            if (!e.shiftKey)  {
+                true;
+            }
+            return false;
+        }
+    }
+    </script>
+</body>
 </html>
